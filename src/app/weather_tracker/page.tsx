@@ -26,7 +26,7 @@ const Tracker = ({ searchParams }: {
     const [mode, setMode] = useState<"dark" | "light">("dark");
     useEffect(() => {
         if (!lat && !lng) {
-            axios.get(`https://api.weatherapi.com/v1/astronomy.json?key=69e781be3f2f446aa0b24547230312&q=49.8106368,-97.1374592&days=7`)
+            axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${city}&days=7`)
                 .then((res: any) => {
                     setData(res.data)
                     const forecast:any = []
