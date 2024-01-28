@@ -5,7 +5,7 @@ const Loader = () => {
           height="100vh"
           background="white"
           // NOTE: Using GIFs for the background looks super cool :)
-          imgUrl="https://i.pinimg.com/originals/6d/92/73/6d9273a33fc437fe9a6a5794540af257.gif"
+          imgUrl="https://i.pinimg.com/originals/03/1a/22/031a228eb520468b72b4bf841a4baba5.gif"
         />
       </div>
     );

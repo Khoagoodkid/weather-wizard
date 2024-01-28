@@ -12,7 +12,7 @@ function Details({ data, astro, mode }: { data: any, astro: any, mode: string })
         <div className='w-1/2 md:w-full flex flex-col items-center'>
           <span className={clsx('text-[4em] font-[700]', mode == "light" ? style.deg_text_dark : style.deg_text_white)}>{data.current.temp_c}&deg;C</span>
           <span className={clsx('text-[1.3em] font-[700]', mode == "light" ? style.deg_text_dark : style.deg_text_white)}>Feels like:
-            <span className={`${mode == "light" ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-[rgba(255,255,255,0.8)]'}bg-clip-text`}>{data.current.feelslike_c}&deg;C</span>
+            <span className={`${mode == "light" ? 'bg-[rgba(0,0,0,0.8)]' : 'bg-[rgba(255,255,255,0.8)]'} bg-clip-text`}>{data.current.feelslike_c}&deg;C</span>
           </span>
         </div>
         <div className='flex flex-col md:text-[1.2em] font-[600] gap-5'>

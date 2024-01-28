@@ -57,7 +57,7 @@ function HourForecast({ data, mode }: { data: any, mode:string }) {
 
   return (
     <div className={clsx(`w-[870x] h-auto ${mode == "light" ? 'bg-[#D9D9D9]':'bg-[#444]'} rounded-[30px] flex flex-col items-center p-[2em] gap-5`, mode=="light" ? style.box_shadow_light : style.box_shadow_dark)}>
-      <h1 className='font-[700] text-[2em]'>Hourly Forecast</h1>
+      <h1 className='font-[700] text-[2em] text-center'>Hourly Forecast</h1>
       <div className='flex gap-2 items-center'>
         <a onClick={handlePrevBtn} className={`p-[.5em] bg-slate-900 rounded-[40px] hover:bg-transparent hover:border-[2px] hover:border-slate-900 cursor-pointer text-white`}>
           <FaArrowLeft/>
@@ -67,7 +67,7 @@ function HourForecast({ data, mode }: { data: any, mode:string }) {
         </a>
       </div>
 
-      <div className='w-full px-[1em]'>
+      <div className='w-full'>
         <Slider {...settings} ref={sliderRef}>
           {hourForecast?.map((h: any, idx: number) => {
             return (

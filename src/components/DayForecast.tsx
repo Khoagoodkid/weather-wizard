@@ -13,7 +13,7 @@ function DayForecast({ data, dayForecast, mode }: { data: any, dayForecast: any,
   }, [])
   return (
     <div className={clsx(`w-full h-auto rounded-[30px] flex flex-col items-center px-[1em] py-[1em] gap-5 ${mode == "light" ? 'bg-[#D9D9D9]' : 'bg-[#444]'}`, mode == "light" ? style.box_shadow_light : style.box_shadow_dark)}>
-      <h1 className='text-[2em] font-[700]'>7 days forecast</h1>
+      <h1 className='text-[2em] font-[700] text-center'>7 days forecast</h1>
       <div className='flex flex-col items-center w-full gap-[0em] md:px-[1em]'>
         {dayForecast.length > 0 && dayForecast.map((day: any, idx: number) => {
           const date = moment.unix(day.date_epoch).format("dddd,  DD MMM");

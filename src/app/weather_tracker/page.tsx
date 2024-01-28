@@ -85,7 +85,7 @@ const Tracker = ({ searchParams }: {
         <div className={clsx(`absolute top-0 left-0 w-full ${mode == "light" ? 'text-black' : 'text-white'}`, mode == "light" ? style.background_light : style.background_dark)}>
             {visible && data && astro && dayForecast ?
                 <>
-                    <div className="h-[7em] w-full flex items-center gap-10 px-[2em]">
+                    <div className="h-auto py-[1em] w-full flex flex-wrap items-center gap-2 md:gap-10 px-[2em]">
                         <ScreenModeToggle
                             mode={mode}
                             setMode={setMode}
@@ -98,7 +98,7 @@ const Tracker = ({ searchParams }: {
                                 lng: location.coordinates?.lng,
                             }
                         }} className={clsx("flex gap-4 px-[2em] text-center justify-center h-[4em] bg-[#4CBB17] items-center rounded-[40px]", mode == "light" ? style.box_shadow_light : style.box_shadow_dark)}>
-                            <Image src="/imgs/current-location.png" alt="Current Location" width={30} height={30} />
+                            <Image src="/imgs/current-location.png" alt="Current Location" width={50} height={50} />
                             <span className="text-[1.2em] font-[700]">Current Location</span>
                         </Link>
                     </div>
@@ -137,10 +137,10 @@ const Tracker = ({ searchParams }: {
                             <Overview data={data} mode={mode} />
                         </div>
                         <div className="col-span-12">
-                            <DayForecast data={data} dayForecast={dayForecast} mode={mode} />
+                            <Details data={data} astro={astro} mode={mode} />
                         </div>
                         <div className="col-span-12">
-                            <Details data={data} astro={astro} mode={mode} />
+                            <DayForecast data={data} dayForecast={dayForecast} mode={mode} />
                         </div>
                         <div className="col-span-12">
                             <HourForecast data={data} mode={mode} />

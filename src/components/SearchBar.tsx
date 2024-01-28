@@ -35,7 +35,7 @@ function SearchBar({mode}: {mode:string}) {
     }
 
     return (
-        <div className={`relative w-[70%] ${mode=="light" ? 'bg-[#D9D9D9] border-[1px] border-[#000]':'bg-[#444]'} h-[4em] flex items-center px-[1em] rounded-[40px] gap-4 `}>
+        <div className={`relative w-[60%] md:w-[60%] ${mode=="light" ? 'bg-[#D9D9D9] border-[1px] border-[#000]':'bg-[#444]'} h-[4em] flex items-center px-[1em] rounded-[40px] gap-4 `}>
             <Image src="/imgs/SearchIcon.png" width={25} height={25} alt='Search'
                 className='z-[2]'
             />
@@ -56,7 +56,7 @@ function SearchBar({mode}: {mode:string}) {
                                 city: city
                             }
                            
-                        }} key={idx} className={`w-full flex items-center pl-[2em] py-[.5em]  ${mode=="light" ? 'hover:bg-slate-200 ':'hover:bg-slate-900'}`}>
+                        }} key={idx} className={`w-full flex items-center pl-[2em] py-[.5em] rounded-[40px] ${mode=="light" ? 'hover:bg-slate-200 ':'hover:bg-slate-900'}`}>
                             <span>{city}, {country}</span>
                         </Link>
                     )
