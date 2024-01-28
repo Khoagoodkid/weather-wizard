@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <div className="absolute left-0 top-0 w-full h-full bg-home-bg bg-no-repeat bg-cover text-white">
       <div className="absolute left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.5)] z-[0]" />
-      <div className="z-[1] w-full h-full flex items-center justify-center flex-col gap-10">
-        <h1 className="text-[4em] font-[700] z-[100]">Weather Wizard</h1>
-        <div className="z-[100] text-[2em]">
+      <div className="z-[1] w-full h-full flex items-center justify-center flex-col gap-10 px-[2em]">
+        <h1 className="text-[4em] font-[700] z-[100] text-center">Weather Wizard</h1>
+        <div className="z-[100] text-[2em] text-center">
           <Typewriter
 
             options={{
