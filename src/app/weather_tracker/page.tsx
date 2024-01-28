@@ -26,13 +26,13 @@ const Tracker = ({ searchParams }: {
     const [mode, setMode] = useState<"dark" | "light">("dark");
     useEffect(() => {
         if (!lat && !lng) {
-            axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${city}&days=7`)
+            axios.get(`https://api.weatherapi.com/v1/astronomy.json?key=69e781be3f2f446aa0b24547230312&q=49.8106368,-97.1374592&days=7`)
                 .then((res: any) => {
                     setData(res.data)
                     const forecast:any = []
                     for (let i = 1; i <= 7; i++) {
                         console.log(i)
-                        axios.get(`http://api.weatherapi.com/v1/forecast.json?key=69e781be3f2f446aa0b24547230312&q=${city}&hour=0&unixdt=${res.data.current.last_updated_epoch + 86400 * i}`)
+                        axios.get(`https://api.weatherapi.com/v1/forecast.json?key=69e781be3f2f446aa0b24547230312&q=${city}&hour=0&unixdt=${res.data.current.last_updated_epoch + 86400 * i}`)
                         .then((res) => {
                             forecast.push(res.data.forecast.forecastday[0])
                         })
@@ -42,19 +42,19 @@ const Tracker = ({ searchParams }: {
                     })
                     setDayForecast(sorted)
                 })
-            axios.get(`http://api.weatherapi.com/v1/astronomy.json?key=${process.env.API_KEY}&q=${city}&days=7`)
+            axios.get(`https://api.weatherapi.com/v1/astronomy.json?key=${process.env.API_KEY}&q=${city}&days=7`)
                 .then((res) => {
                     setAstro(res.data.astronomy.astro)
                 })
            
         } else {
-            axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${lat},${lng}&days=7`)
+            axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${lat},${lng}&days=7`)
                 .then((res: any) => {
                     setData(res.data)
                     const forecast:any = []
                     for (let i = 1; i <= 7; i++) {
                         console.log(i)
-                        axios.get(`http://api.weatherapi.com/v1/forecast.json?key=69e781be3f2f446aa0b24547230312&q=${lat},${lng}&hour=0&unixdt=${res.data.current.last_updated_epoch + 86400 * i}`)
+                        axios.get(`https://api.weatherapi.com/v1/forecast.json?key=69e781be3f2f446aa0b24547230312&q=${lat},${lng}&hour=0&unixdt=${res.data.current.last_updated_epoch + 86400 * i}`)
                         .then((res) => {
                             forecast.push(res.data.forecast.forecastday[0])
                         })
@@ -64,7 +64,7 @@ const Tracker = ({ searchParams }: {
                     })
                     setDayForecast(sorted)
                 })
-            axios.get(`http://api.weatherapi.com/v1/astronomy.json?key=${process.env.API_KEY}&q=${lat},${lng}&days=7`)
+            axios.get(`https://api.weatherapi.com/v1/astronomy.json?key=${process.env.API_KEY}&q=${lat},${lng}&days=7`)
                 .then((res) => {
                     setAstro(res.data.astronomy.astro)
                 })
