@@ -1,0 +1,54 @@
+.background_dark {
+  background: linear-gradient(
+    110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+}
+.background_light {
+  background: linear-gradient(
+    -110deg,
+    #383838 0%,
+    rgba(158, 158, 158, 0) 71.82%
+  );
+}
+.box_shadow_light {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.box_shadow_dark {
+  box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
+.deg_text_white {
+  background: linear-gradient(
+    84deg,
+    #fff -16.56%,
+    rgba(255, 255, 255, 0) 118.43%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.deg_text_dark {
+  background: linear-gradient(
+    80deg,
+    #292929 -2.93%,
+    rgba(255, 255, 255, 0) 212.44%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.day_bg {
+  background: linear-gradient(
+    171deg,
+    #f88508 -12.41%,
+    rgba(246, 250, 217, 0) 163.32%
+  );
+}
+.night_bg {
+  background: linear-gradient(
+    168deg,
+    #443d64 -19.21%,
+    rgba(101, 130, 198, 0) 158.48%
+  );
+}
