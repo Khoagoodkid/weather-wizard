@@ -14,6 +14,7 @@ import Loader from "@/components/Loader"
 import Image from "next/image"
 import Link from "next/link"
 import useGeoLocation from "@/hooks/useGeoLocation"
+import { motion } from "framer-motion"
 const Tracker = ({ searchParams }: {
     searchParams: {
         lat?: string,
@@ -35,7 +36,7 @@ const Tracker = ({ searchParams }: {
                     setData(res.data)
                     const forecast: any = []
                     for (let i = 1; i <= 7; i++) {
-                      
+
                         axios.get(`https://api.weatherapi.com/v1/forecast.json?key=69e781be3f2f446aa0b24547230312&q=${city}&hour=0&unixdt=${res.data.current.last_updated_epoch + 86400 * i}`)
                             .then((res) => {
                                 forecast.push(res.data.forecast.forecastday[0])
@@ -57,7 +58,7 @@ const Tracker = ({ searchParams }: {
                     setData(res.data)
                     const forecast: any = []
                     for (let i = 1; i <= 7; i++) {
-              
+
                         axios.get(`https://api.weatherapi.com/v1/forecast.json?key=69e781be3f2f446aa0b24547230312&q=${lat},${lng}&hour=0&unixdt=${res.data.current.last_updated_epoch + 86400 * i}`)
                             .then((res) => {
                                 forecast.push(res.data.forecast.forecastday[0])
@@ -82,15 +83,23 @@ const Tracker = ({ searchParams }: {
         }, 3000)
     }, [data])
     return (
-        <div className={clsx(`absolute top-0 left-0 w-full ${mode == "light" ? 'text-black' : 'text-white'}`, mode == "light" ? style.background_light : style.background_dark)}>
+        <div className={clsx(`absolute top-0 left-0 w-full pt-[1em] pb-[2em] ${mode == "light" ? 'text-black' : 'text-white'}`, mode == "light" ? style.background_light : style.background_dark)}>
             {visible && data && astro && dayForecast ?
                 <>
                     <div className="h-auto py-[1em] w-full flex flex-wrap items-center gap-2 md:gap-10 px-[2em]">
-                        <ScreenModeToggle
-                            mode={mode}
-                            setMode={setMode}
-                        />
-                        <SearchBar mode={mode}/>
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0 }}
+                            viewport={{once:true}}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                        >
+                            <ScreenModeToggle
+                                mode={mode}
+                                setMode={setMode}
+                            />
+
+                        </motion.div>
+                        <SearchBar mode={mode} />
                         <Link href={{
                             pathname: "/weather_tracker",
                             query: {
@@ -103,48 +112,109 @@ const Tracker = ({ searchParams }: {
                         </Link>
                     </div>
                     <div className="w-full h-auto py-[1em] grid grid-cols-12 px-[5em] gap-6 hidden xl:grid">
-                        <div className="col-span-5">
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                            className="col-span-5">
                             <Overview data={data} mode={mode} />
-                        </div>
-                        <div className="col-span-7">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .8 }}
+                            className="col-span-7">
                             <Details data={data} astro={astro} mode={mode} />
-                        </div>
-                        <div className="col-span-4">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 1.4 }}
+                            className="col-span-4">
                             <DayForecast data={data} dayForecast={dayForecast} mode={mode} />
-                        </div>
-                        <div className="col-span-8">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 1.1 }}
+                            className="col-span-8">
                             <HourForecast data={data} mode={mode} />
-                        </div>
+                        </motion.div>
                     </div>
 
                     <div className="w-full h-auto py-[1em] grid grid-cols-12 px-[2em] gap-6 hidden md:grid xl:hidden">
-                        <div className="col-span-6">
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                            className="col-span-6">
                             <Overview data={data} mode={mode} />
-                        </div>
-                        <div className="col-span-6">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .8 }}
+                            className="col-span-6">
                             <DayForecast data={data} dayForecast={dayForecast} mode={mode} />
-                        </div>
-                        <div className="col-span-12">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 100 }}
+
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 1.1 }}
+                            className="col-span-12">
                             <Details data={data} astro={astro} mode={mode} />
-                        </div>
-                        <div className="col-span-12">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, y: 100 }}
+
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                            className="col-span-12">
                             <HourForecast data={data} mode={mode} />
-                        </div>
+                        </motion.div>
                     </div>
 
                     <div className="w-full h-auto py-[1em] grid grid-cols-12 px-[2em] gap-6 md:hidden">
-                        <div className="col-span-12">
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+
+                            className="col-span-12">
                             <Overview data={data} mode={mode} />
-                        </div>
-                        <div className="col-span-12">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                            className="col-span-12">
                             <Details data={data} astro={astro} mode={mode} />
-                        </div>
-                        <div className="col-span-12">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: -100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                            className="col-span-12">
                             <DayForecast data={data} dayForecast={dayForecast} mode={mode} />
-                        </div>
-                        <div className="col-span-12">
+                        </motion.div>
+                        <motion.div
+                            initial={{ opacity: 0, x: 100 }}
+
+                            whileInView={{ x: 0, opacity: 1 }}
+                            transition={{ duration: .5 }}
+                            className="col-span-12">
                             <HourForecast data={data} mode={mode} />
-                        </div>
+                        </motion.div>
                     </div>
                 </>
                 : (
